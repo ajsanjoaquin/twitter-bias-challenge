@@ -14,10 +14,12 @@ In this work, we investigate how Cropper may introduce representational harm aga
 ### Why this harm is dangerous
 Various groups are prevented from expressing themselves or their work involving nudity because of various social, religious, and legal restrictions imposed on them such as censorship and modesty norms. Twitter provides a safe space: a space for these groups to freely express themselves [1], and it has historically fostered such communities centered on "sensitive content" when other websites shun these groups away. [2, 3] However, unintentionally denigrading these groups into purely sexual entities goes against Twitter's commitment to Equality and Civil Liberties for all people. [4]
 
-## Methodology (* are addressed in Limitations)
+## Methodology
+**Note that parts marked with \* are addressed in Limitations.**
+
 We identify 4 groups of Twitter users who may be adversely affected: LGBTQ+ Artists, Indigenous Culture Peoples / advocates, White Naturists, and Black Naturists. Originally we only had one group for naturists, but we decided to split it after seeing many naturist pages on Twitter mostly contain images of white naturists only. 
 
-For each of these groups, we identify a user that posts images on these groups and with a sizable following as a proxy for reputation ( > 500). For each user, we collect 15 public images* from their Twitter page via an open-sourced image scraper ([Scweet](https://github.com/Altimis/Scweet)).
+For each of these groups, we identify a user that posts images on these groups and with a sizable following as a proxy for reputation ( > 500). For each user, we collect 15 public images showing partial or full nudity of a human subject/s* from their Twitter page via an open-sourced image scraper ([Scweet](https://github.com/Altimis/Scweet)).
 
 We then run Cropper on each image to identify the salient point. We then return the original image with a 200 x 200 pixel rectangle whose center is the salient point superimposed on that image. Finally, we use a detector to classify whether the image area within the rectangle is almost exclusively an intimate part. For our purposes, we use the common definition of intimate parts, which are: buttocks, anus, genitalia, and breasts [5]. We use a positive result, i.e. that the rectangluar region is focused on intimate part/s, as a proxy for sexual objectification and denigration*.
 
@@ -102,7 +104,7 @@ We take this estimate from the fact that the users we selected have greater than
 * Likelihood: We have demonstrated that denigration occurred in some images from Twitter. Given that some users in our dataset uploaded daily and the expected number of users in these communities will continue to rise given the growing base of Twitter users and creation of more diverse sub-communities within the groups we identified (e.x. more indigenous people pages from different states & continents), 
 we expect that this harm will recur daily (x1.3).
 * Justification: We justify [in this section](#why-this-harm-is-dangerous) why this harm is dangerous and must be addressed by Twitter. While our methodology have clear limitations, we operationalized on the notion of sexual objectification to investigate our our perceived harm. (x1.25)
-* Clarity: We demonstrate the risk of harm through example Twitter images that are annotated by the Cropper and denigrated. We also provide a comprehensive list of limitations and provide suggestions that future research can address. (x1.25)
+* Clarity: We demonstrate the risk of harm through example Twitter images that are annotated by the Cropper and denigrated. We also provide a comprehensive list of limitations and provide suggestions that future research can address. Furthermore, we provide the notebook to reproduce our dataset and methodology. In the case where we manually collected data, we also provide [instructions from the last paragraph of this section](#methodology) on how to reproduce it. (x1.25)
 
 * Final Score: 20 * 1.2 * 1.4 * 1.1 * 1.3 * 1.25 * 1.25 = 75.075
 ## References

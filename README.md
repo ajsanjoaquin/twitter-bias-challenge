@@ -9,15 +9,35 @@ This is a repo for analyzing Twitter's [Image Crop Analysis paper](https://arxiv
 ## Problem Statement
 Twitter's Image Crop Algorithm (Cropper) crops a portion of an image uploaded on Twitter to be used as the image thumbnail / preview. The algorithm is trained via Machine Learning on eye-tracking data. However, this may inadverdently / deliberately be used to introduce harms against certain groups of people. 
 
-In this work, we investigate how Cropper may introduce representational harm against artists of various traditions, indigenous peoples, and peoples who do not conform to Western notions of clothing. Specifically, we explore how uploading images depicting non-sexual or non-pornographic nudity and inputting them to the Cropper may produce cropped images focused on intimate parts, which denigrades these communities and reduces the human subjects into sexualized objects.
+In this work, we investigate how Cropper may introduce representational harm against artists of various traditions, indigenous peoples, and communities who do not conform to Western notions of clothing. Specifically, we explore how uploading images depicting non-sexual or non-pornographic nudity and inputting them to the Cropper may produce cropped images focused on intimate parts, which denigrades these communities and reduces the human subjects into sexualized objects.
+
+### Why this harm is dangerous
+Various groups are prevented from expressing themselves or their work involving nudity because of various social, religious, and legal restrictions imposed on them such as censorship and modesty norms. Twitter provides a safe space: a space for these groups to freely express themselves [1], and it has historically fostered such communities centered on "sensitive content" when other websites shun these groups away. [2, 3] However, unintentionally denigrading these groups into purely sexual entities goes against Twitter's commitment to Equality Civil Liberties for all people [4]
 ## Methodology (* are addressed in Limitations)
-We identify 4 groups of Twitter users who may be adversely affected: LGBTQ+ Artists, Indigenous Culture Peoples / advocates, White Naturists, and Black Naturists. Originally we only had one group for naturists, but we decided to split it after seeing many naturist pages on Twitter mostly contain images of white naturists only. 
+We identify 4 groups of Twitter users who may be adversely affected: LGBTQ+ Artists, Indigenous Peoples, White Naturists, and Black Naturists. Originally we only had one group for naturists, but we decided to split it after seeing many naturist pages on Twitter mostly contain images of white naturists only. 
 
 For each of these groups, we identify a user that posts images on these groups and with a sizable following as a proxy for reputation ( > 500). For each user, we collect 15 public images* from their Twitter page via an open-sourced image scraper ([Scweet](https://github.com/Altimis/Scweet)).
 
-We then run Cropper on each image to identify the salient point. We then return the original image with a 200 x 200 pixel rectangle whose center is the salient point superimposed on that image. Finally, we use a detector to classify whether the image area within the rectangle is almost exclusively an intimate part. For our purposes, we use the common definition of intimate parts, which are: buttocks, anus, genitalia, and breasts [1]. We use a positive result, i.e. that the rectangluar region is focused on intimate part/s, as a proxy for sexual objectification and denigration*.
+We then run Cropper on each image to identify the salient point. We then return the original image with a 200 x 200 pixel rectangle whose center is the salient point superimposed on that image. Finally, we use a detector to classify whether the image area within the rectangle is almost exclusively an intimate part. For our purposes, we use the common definition of intimate parts, which are: buttocks, anus, genitalia, and breasts [5]. We use a positive result, i.e. that the rectangluar region is focused on intimate part/s, as a proxy for sexual objectification and denigration*.
 
-Initially our detector is an open-sourced trained Neural Network called [NudeNet](https://github.com/notAI-tech/NudeNet)*. However, since the accuracy metrics are not publicly reported in the repository and there was a high error rate for our data, we decided to use a human to detect for each image.
+Initially our detector is an open-sourced trained Neural Network called [NudeNet](https://github.com/notAI-tech/NudeNet)*. However, since the accuracy metrics are not publicly reported in the repository and there was a high error rate for our data, we decided to use a human to detect for each image. Given our detector is a human, we also decided to expand our detection labels to three:
+
+1. *is_objectified* - detects for intimate part/s making a majority of the cropped region
+2. *is_text* - detects if majority of the cropped region is text / part of text
+3. *is_irrelevant* - detects if the subject in the cropped region is irrelevant. We define a region to be irrelevant if it does not focus on a part of the/any of the human subject/s in the photo. 
+
+Note that these labels are mutually exclusive (e.g. if a region has an intimate part, it cannot be irrelevant)
+
+The full table is in **results.csv**. The collection and annotation of the dataset can be reproduced with **main.ipynb**, except for manually collected images. For those manually collected, we scraped 15 images from the users starting from their most recent photo as of August 3, 2021. The analysis code used for the results section can be found in **analysis.r**. We also provide the annotated images in .zipped format. Refer to the table below for details
+
+| Group              | Folder Name                     | Images Owner | Twitter Source                   |
+|--------------------|---------------------------------|--------------|----------------------------------|
+| LGBTQ+ Artists     | imgs_gay_annotated.zip          | bubentcov    | https://twitter.com/bubentcov    |
+| Indigenous Peoples | imgs_tribal_annotated.zip       | tribalnude   | https://twitter.com/tribalnude   |
+| White Nudists	     | imgs_nudist_white_annotated.zip | artskyclad   | https://twitter.com/artskyclad   |
+| Black Nudists      | imgs_nudist_black_annotated.zip | blknudist75  | https://twitter.com/blknudist75  |
+| Samples            | Samples                         | Katrin Dirim | https://twitter.com/kleioscanvas |
+
 
 ## Limitations
 This project has several limitations and its findings should thus not be used as definite evidence for the existence of denigration of the affected communities. Rather, this serves to introduce the possibility of harm, and it should serve as a guide for future work that can conclusively identify and address this specific harm.
@@ -33,9 +53,12 @@ However, we belive we took the necessary caution to represent groups as much as 
 3. **We did not find any reliable Intimate Part Detector Models** While NudeNet was available, it was the only detector we could find. As we have stated, it was inadequate for our purpose. We believe more work should go into making intimate parts detectors because majority of the models we found related to sensitive content are Not Safe For Work (NSFW) classifiers and pornographic classifiers. 
 
 In addition to having more detectors, future work would require training or fintuning to a dataset of similar distribution (ideally images all collected from Twitter) so that the detector would work more accurately.
-## Conclusion and Limitations
+## Conclusion
 
-
+### Grading Rubric
 ## References
-
-1. https://en.wikipedia.org/wiki/Intimate_part
+1. https://www.vox.com/2016/7/5/11949258/safe-spaces-explained
+2. https://www.rollingstone.com/culture/culture-features/sex-worker-twitter-deplatform-1118826/
+3. https://www.nbcnews.com/feature/nbc-out/lgbtq-out-social-media-nowhere-else-n809796
+4. https://about.twitter.com/en/who-we-are/twitter-for-good
+5. https://en.wikipedia.org/wiki/Intimate_part

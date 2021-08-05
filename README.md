@@ -60,9 +60,8 @@ Our results show that a higher proportion of Nudist_White and Tribal images are 
 
 Unwanted cropping is the total proportion of images in each category that had the algorithm cropping (1) intimate parts, (2) text, or (3) other non-human objects when a human primary subject was present.
 
-A higher proportion of Nudist_Black images had unwanted cropping parameters followed by Nudist_White and Gay and then Tribal images. Our hypothesis for this pattern is that the algorithm has more difficulty in identifying dark toned faces compared to other tones present. For example, in the following two images the algorithm highlights the faces present in artworks instead of the individuals themselves.
+A higher proportion of Nudist_Black images had unwanted cropping parameters followed by Nudist_White and Gay and then Tribal images. Our hypothesis for this pattern is that the algorithm has more difficulty in identifying dark toned faces compared to other tones present. For example, in the following image the algorithm highlights the face present in the artwork behind instead of the individual themselve.
 
-![two people painting](img_md/2.jpg?raw=true)
 ![person standing](img_md/1.jpg?raw=true)
 
 These shortcomings may mean the algorithm has a higher likelihood of not choosing darker toned individuals as its focus and so may crop images containing such individuals unfairly or even fail to find the correct subject.

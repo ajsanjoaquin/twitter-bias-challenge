@@ -1,7 +1,7 @@
 # Twitter Cropper's Gaze on Sensitive Content Involving Nudity
 
 ![analysis sample](img_md/header.png?raw=true)
-*The Cropper identifies the right nipple as the most salient point. Cropping this area alone as a preview image denigrades the subject as a sexualized object.
+*The Cropper identifies the right nipple as the most salient point. Cropping this area alone as a preview image denigrates the subject as a sexualized object.
 Image taken from Twitter and owned by [Katrin Dirim](https://twitter.com/kleioscanvas)*
 
 This is a repo for analyzing Twitter's [Image Crop Analysis paper](https://arxiv.org/abs/2105.08667) (Yee, Tantipongpipat, and Mishra, 2021) for the 2021 [Twitter Algorithmic Bias Challenge](https://hackerone.com/twitter-algorithmic-bias). The Image Cropper repo can be found [here](https://github.com/twitter-research/image-crop-analysis)
@@ -9,7 +9,7 @@ This is a repo for analyzing Twitter's [Image Crop Analysis paper](https://arxiv
 ## Problem Statement
 Twitter's Image Crop Algorithm (Cropper) crops a portion of an image uploaded on Twitter to be used as the image thumbnail / preview. The algorithm is trained via Machine Learning on eye-tracking data. However, this may inadverdently / deliberately be used to introduce harms against certain groups of people. 
 
-In this work, we investigate how Cropper may introduce representational harm against artists of various traditions, indigenous peoples, and communities who do not conform to Western notions of clothing. Specifically, we explore how uploading images depicting non-sexual or non-pornographic nudity and inputting them to the Cropper may produce cropped images focused on intimate parts, which denigrades these communities and reduces the human subjects into sexualized objects.
+In this work, we investigate how Cropper may introduce representational harm against artists of various traditions, indigenous peoples, and communities who do not conform to Western notions of clothing. Specifically, we explore how uploading images depicting non-sexual or non-pornographic nudity and inputting them to the Cropper may produce cropped images focused on intimate parts, which denigrates these communities and reduces the human subjects into sexualized objects.
 
 ### Why this harm is dangerous
 Various groups are prevented from expressing themselves or their work involving nudity because of various social, religious, and legal restrictions imposed on them such as censorship and modesty norms. Twitter provides a safe space: a space for these groups to freely express themselves [1], and it has historically fostered such communities centered on "sensitive content" when other websites shun these groups away. [2, 3] However, unintentionally denigrading these groups into purely sexual entities goes against Twitter's commitment to Equality and Civil Liberties for all people. [4]
@@ -74,18 +74,37 @@ This project has several limitations and its findings should thus not be used as
 
 In particular, we identifed three major limitations:
 
-1. **Our Dataset is extremely small** Our automatic scraper did not work for sensitive content, so we had to resort to manually downloading each image. We also did not have an accurate initmate parts detector model. Both of these prevented us from scaling our dataset to a larger size that can produce more comprehensive conclusions. We were also restricted to single users to represent the entire group, which we acknowledge may adversely restrict the conclusion. For example, for LGBTQ+ Artists, we were only able to pick a user focusing on gay art, which may have precluded more observations of the cropper denigrading. 
+1. **Our Dataset is extremely small.** 
+
+Our automatic scraper did not work for sensitive content, so we had to resort to manually downloading each image. We also did not have an accurate initmate parts detector model. Both of these prevented us from scaling our dataset to a larger size that can produce more comprehensive conclusions. We were also restricted to single users to represent the entire group, which we acknowledge may adversely restrict the conclusion. For example, for LGBTQ+ Artists, we were only able to pick a user focusing on gay art, which may have precluded more observations of the cropper denigrading. 
 
 However, we belive we took the necessary caution to represent groups as much as our limited analysis power can bring us. For example, as aforementioned, we split the Naturist group into White and Black after noticing that most naturist pages consist overwhelmingly of white people. In general, making a large-scale dataset will be hard given the legal restrictions and the necessary consent of owners involving sensitive data.
 
-2. **Some Images may want to direct attention to Intimate Parts** There are some images whose authors intend the viewers to look at the intimate parts in non- sexual/objectifying ways. Some images may also focus on an intimate part entirely. One prominent example that we have seen are breast paintings/artwork. Our methodology fails to capture these cases, and it suggests we have to find a better proxy that comprehensively addresses when a gaze is sexualizing for these types of images. 
+2. **Some Images may want to direct attention to Intimate Parts.** 
 
-3. **We did not find any reliable Intimate Part Detector Models** While NudeNet was available, it was the only detector we could find. As we have stated, it was inadequate for our purpose. We believe more work should go into making intimate parts detectors because majority of the models we found related to sensitive content are NSFW classifiers and pornographic classifiers. 
+There are some images whose authors intend the viewers to look at the intimate parts in non- sexual/objectifying ways. Some images may also focus on an intimate part entirely. One prominent example that we have seen are breast paintings/artwork. Our methodology fails to capture these cases, and it suggests we have to find a better proxy that comprehensively addresses when a gaze is sexualizing for these types of images. 
 
-In addition to having more detectors, future work would require training or fintuning to a dataset of similar distribution (ideally images all collected from Twitter) so that the detector would work more accurately.
-## Conclusion and Limitations
-In this study, we illustrate that there does exist some level of sexualizing of images by the cropper by focussing on intimate parts when they may not be the subject of the image. This effect is magnified for white naturalist and tribal images compared to LGBTQ and black naturalist images. Moreover, we also observe a high proportion of black naturalist images where the algorithm identifies the wrong subject, therefore avoiding people of darker skin tone. These findings present representational harm for several communities since it can alter the messaging of these users' posts and hence be marked as sensitive or seem sensitive when the intention is otherwise.
+3. **We did not find any reliable Intimate Part Detector Models.** 
 
+While NudeNet was available, it was the only detector we could find. As we have stated, it was inadequate for our purpose. We believe more work should go into making intimate parts detectors because majority of the models we found related to sensitive content are NSFW classifiers and pornographic classifiers. 
+
+In addition to having more detectors, future work would require training or finetuning to a dataset of similar distribution (ideally images all collected from Twitter) so that the detector would work more accurately.
+
+## Conclusion 
+In this project, we illustrate that there does exist some level of sexualizing of images by the cropper by focussing on intimate parts when they may not be the subject of the image. This effect is magnified for white naturalist and tribal images compared to LGBTQ and black naturalist images. Moreover, we also observe a high proportion of black naturalist images where the algorithm identifies the wrong subject, therefore avoiding people of darker skin tone. These findings present representational harm for several communities since it can alter the messaging of these users' posts and hence be marked as sensitive or seem sensitive when the intention is otherwise.
+
+## Self-Reported Rubric
+
+* Harm Base Score: Unintentional Denigration (20 points)
+* Damage: Harm is measured along a single axis of identity (Naturism / Diverse notions of clothing) (x1.2) and affects communities who express themselves with nudity / non-Western notions of clothing. Reducing these groups to sexual objects constitute severe harm to them (x1.4).
+* Affected users: We estimate that the number of users who post these content plus the number of their audiences to be > 1000 (x1.1).
+We take this estimate from the fact that the users we selected have greater than 500 followers, and we assume that majority of their followers view their content. 
+* Likelihood: We have demonstrated that denigration occurred in some images from Twitter. Given that some users in our dataset uploaded daily and the expected number of users in these communities will continue to rise given the growing base of Twitter users and creation of more diverse sub-communities within the groups we identified (e.x. more indigenous people pages from different states & continents), 
+we expect that this harm will recur daily (x1.3).
+* Justification: We justify [in this section](#why-this-harm-is-dangerous) why this harm is dangerous and must be addressed by Twitter. While our methodology have clear limitations, we operationalized on the notion of sexual objectification to investigate our our perceived harm. (x1.25)
+* Clarity: We demonstrate the risk of harm through example Twitter images that are annotated by the Cropper and denigrated. We also provide a comprehensive list of limitations and provide suggestions that future research can address. (x1.25)
+
+* Final Score: 20 * 1.2 * 1.4 * 1.1 * 1.3 * 1.25 * 1.25 = 75.075
 ## References
 1. https://www.vox.com/2016/7/5/11949258/safe-spaces-explained
 2. https://www.rollingstone.com/culture/culture-features/sex-worker-twitter-deplatform-1118826/

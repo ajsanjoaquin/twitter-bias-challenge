@@ -37,7 +37,7 @@ The full table is in **results.csv**. The collection and annotation of the datas
 |--------------------|---------------------------------|--------------|----------------------------------|
 | LGBTQ+ Artists     | imgs_gay_annotated.zip          | bubentcov    | https://twitter.com/bubentcov    |
 | Indigenous Peoples | imgs_tribal_annotated.zip       | tribalnude   | https://twitter.com/tribalnude   |
-| White Nudists	     | imgs_nudist_white_annotated.zip | artskyclad   | https://twitter.com/artskyclad   |
+| White Nudists      | imgs_nudist_white_annotated.zip | artskyclad   | https://twitter.com/artskyclad   |
 | Black Nudists      | imgs_nudist_black_annotated.zip | blknudist75  | https://twitter.com/blknudist75  |
 | Samples            | Samples                         | Katrin Dirim | https://twitter.com/kleioscanvas |
 
@@ -71,28 +71,30 @@ These shortcomings may mean the algorithm has a higher likelihood of not choosin
 Furthermore, there are other cases, more generally, where the algorithm favors text over actual subjects in photographs. This produces a more general problem for most users since in most cases, the text in images are complementary to the subject (if any) in the image. Therefore, the cropping algorithm will miss the actual subject and will result in harm to users not being able to showcase their images effectively.
 
 ## Limitations
+
 This project has several limitations and its findings should thus not be used as definite evidence for the existence of denigration of the affected communities. Rather, this serves to introduce the possibility of harm, and it should serve as a guide for future work that can conclusively identify and address this specific harm.
 
 In particular, we identifed three major limitations:
 
-1. **Our Dataset is extremely small.** 
+1. **Our Dataset is extremely small.**
 
 Our automatic scraper did not work for sensitive content, so we had to resort to manually downloading each image. We also did not have an accurate initmate parts detector model. Both of these prevented us from scaling our dataset to a larger size that can produce more comprehensive conclusions. We were also restricted to single users to represent the entire group, which we acknowledge may adversely restrict the conclusion. For example, for LGBTQ+ Artists, we were only able to pick a user focusing on gay art, which may have precluded more observations of the cropper denigrading. 
 
 However, we belive we took the necessary caution to represent groups as much as our limited analysis power can bring us. For example, as aforementioned, we split the Naturist group into White and Black after noticing that most naturist pages consist overwhelmingly of white people. In general, making a large-scale dataset will be hard given the legal restrictions and the necessary consent of owners involving sensitive data.
 
-2. **Some Images may want to direct attention to Intimate Parts.** 
+2. **Some Images may want to direct attention to Intimate Parts.**
 
-There are some images whose authors intend the viewers to look at the intimate parts in non- sexual/objectifying ways. Some images may also focus on an intimate part entirely. One prominent example that we have seen are breast paintings/artwork. Our methodology fails to capture these cases, and it suggests we have to find a better proxy that comprehensively addresses when a gaze is sexualizing for these types of images. 
+There are some images whose authors intend the viewers to look at the intimate parts in non- sexual/objectifying ways. Some images may also focus on an intimate part entirely. One prominent example that we have seen are breast paintings/artwork. Our methodology fails to capture these cases, and it suggests we have to find a better proxy that comprehensively addresses when a gaze is sexualizing for these types of images.
 
-3. **We did not find any reliable Intimate Part Detector Models.** 
+3. **We did not find any reliable Intimate Part Detector Models.**
 
 While NudeNet was available, it was the only detector we could find. As we have stated, it was inadequate for our purpose. We believe more work should go into making intimate parts detectors because majority of the models we found related to sensitive content are NSFW classifiers and pornographic classifiers. 
 
 In addition to having more detectors, future work would require training or finetuning to a dataset of similar distribution (ideally images all collected from Twitter) so that the detector would work more accurately.
 
-## Conclusion 
-In this project, we illustrate that there does exist some level of sexualizing of images by the cropper by focussing on intimate parts when they may not be the subject of the image. This effect is magnified for white naturalist and tribal images compared to LGBTQ and black naturalist images. Moreover, we also observe a high proportion of black naturalist images where the algorithm identifies the wrong subject, therefore avoiding people of darker skin tone. These findings present representational harm for several communities since it can alter the messaging of these users' posts and hence be marked as sensitive or seem sensitive when the intention is otherwise.
+## Conclusion
+
+In this project, we illustrate that *all groups* are affected by some level of objectification by the Cropper by focussing on intimate parts when they may not be the subject of the image. In addition to this, some groups experience additional harms. For example, we observe a high proportion of black naturalist images where the algorithm identifies the wrong subject, therefore avoiding people of darker skin tone. These findings show that both sexualization of images along with identification of wrong subjects in images present a risk to Twitter users and affected communities by manipulating the intent of the images. However, we recommend [additional work](#limitations) to verify our results for a broader dataset and identify more rigorous measures of sexual objectification.
 
 ## Self-Reported Rubric
 

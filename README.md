@@ -21,7 +21,23 @@ For each of these groups, we identify a user that posts images on these groups a
 
 We then run Cropper on each image to identify the salient point. We then return the original image with a 200 x 200 pixel rectangle whose center is the salient point superimposed on that image. Finally, we use a detector to classify whether the image area within the rectangle is almost exclusively an intimate part. For our purposes, we use the common definition of intimate parts, which are: buttocks, anus, genitalia, and breasts [5]. We use a positive result, i.e. that the rectangluar region is focused on intimate part/s, as a proxy for sexual objectification and denigration*.
 
-Initially our detector is an open-sourced trained Neural Network called [NudeNet](https://github.com/notAI-tech/NudeNet)*. However, since the accuracy metrics are not publicly reported in the repository and there was a high error rate for our data, we decided to use a human to detect for each image.
+Initially our detector is an open-sourced trained Neural Network called [NudeNet](https://github.com/notAI-tech/NudeNet)*. However, since the accuracy metrics are not publicly reported in the repository and there was a high error rate for our data, we decided to use a human to detect for each image. Given our detector is a human, we also decided to expand our detection labels to three:
+
+1. *is_objectified* - detects for intimate part/s making a majority of the cropped region
+2. *is_text* - detects if majority of the cropped region is text / part of text
+3. *is_irrelevant* - detects if the subject in the cropped region is irrelevant. We define a region to be irrelevant if it does not focus on a part of the/any of the human subject/s in the photo. 
+
+Note that these labels are mutually exclusive (e.g. if a region has an intimate part, it cannot be irrelevant)
+
+The full table is in **results.csv**. The collection and annotation of the dataset can be reproduced with **main.ipynb**, except for manually collected images. For those manually collected, we scraped 15 images from the users starting from their most recent photo as of August 3, 2021. The analysis code used for the results section can be found in **analysis.r**. We also provide the annotated images in .zipped format. Refer to the table below for details
+
+| Group              | Folder Name                     | Images Owner | Twitter Source                   |
+|--------------------|---------------------------------|--------------|----------------------------------|
+| LGBTQ+ Artists     | imgs_gay_annotated.zip          | bubentcov    | https://twitter.com/bubentcov    |
+| Indigenous Peoples | imgs_tribal_annotated.zip       | tribalnude   | https://twitter.com/tribalnude   |
+| White Nudists	     | imgs_nudist_white_annotated.zip | artskyclad   | https://twitter.com/artskyclad   |
+| Black Nudists      | imgs_nudist_black_annotated.zip | blknudist75  | https://twitter.com/blknudist75  |
+| Samples            | Samples                         | Katrin Dirim | https://twitter.com/kleioscanvas |
 
 ## Results
 
@@ -44,8 +60,8 @@ Our results show that a higher proportion of Nudist_White and Tribal images are 
 
 A higher proportion of Nudist_Black images had unwanted cropping parameters followed by Nudist_White, Gay, and Tribal images. Our hypothesis for this pattern is that the algorithm has more difficulty in identifying dark toned faces compared to other tones present. For example, in the following two images the algorithm highlights the faces present in artworks instead of the individuals themselves.
 
-![two people painting](img_md/2.png?raw=true)
-![person standing](img_md/1.png?raw=true)
+![two people painting](img_md/2.jpg?raw=true)
+![person standing](img_md/1.jpg?raw=true)
 
 These shortcomings may mean the algorithm has a higher likelihood of not choosing darker toned individuals as its focus and so may crop images containing such individuals unfairly or even fail to find the correct subject.
 

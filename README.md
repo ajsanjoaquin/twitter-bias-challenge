@@ -56,13 +56,13 @@ The aggregated results according to each category are shown below:
 
 ### Objectification
 
-Our results show that a higher proportion of Nudist_White and Tribal images are being objectified by the algorithm compared to the Gay and Nudist_Black images. This shows overall, certain individuals have a higher chance of being cropped in a way that objectifies their images but also that overall, atleast 6% of images in all categories are cropped in this way. This has inherent harm to all users since people posting the images may have other intentions and may want to place focus on something else but the cropping alters their messaging to other users.
+Our results show that a higher proportion of White Nudists and Indigenous Peoples images are being objectified by the algorithm compared to the LGBTQ+ Artists and Black Nudists images. This shows overall, certain individuals have a higher chance of being cropped in a way that objectifies their images but also that overall, atleast 6% of images in all categories are cropped in this way. This has inherent harm to all users since people posting the images may have other intentions and may want to place focus on something else but the cropping alters their messaging to other users.
 
 ### Unwanted Cropping
 
 Unwanted cropping is the total proportion of images in each category that had the algorithm cropping either (1) intimate parts, (2) text, or (3) other non-human objects when a human primary subject was present.
 
-A higher proportion of Nudist_Black images had unwanted cropping parameters followed by Nudist_White and Gay and then Tribal images. Our hypothesis for this pattern is that the algorithm has more difficulty in identifying dark toned faces compared to other tones present. For example, in the following image the algorithm highlights the face present in the artwork behind instead of the individual themselve.
+A higher proportion of Black Nudists images had unwanted cropping parameters followed by White Nudists and LGBTQ+ Artists and then Indigenous Peoples images. Our hypothesis for this pattern is that the algorithm has more difficulty in identifying dark toned faces compared to other tones present. For example, in the following image the algorithm highlights the face present in the artwork behind instead of the individual themselve.
 
 ![person standing](img_md/1.jpg?raw=true)
 

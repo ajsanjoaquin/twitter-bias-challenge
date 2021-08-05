@@ -58,6 +58,8 @@ Our results show that a higher proportion of Nudist_White and Tribal images are 
 
 ### Unwanted Cropping
 
+Unwanted cropping is the total proportion of images in each category that had the algorithm cropping (1) intimate parts, (2) text, or (3) other non-human objects when a human primary subject was present.
+
 A higher proportion of Nudist_Black images had unwanted cropping parameters followed by Nudist_White, Gay, and Tribal images. Our hypothesis for this pattern is that the algorithm has more difficulty in identifying dark toned faces compared to other tones present. For example, in the following two images the algorithm highlights the faces present in artworks instead of the individuals themselves.
 
 ![two people painting](img_md/2.jpg?raw=true)
@@ -82,7 +84,7 @@ However, we belive we took the necessary caution to represent groups as much as 
 
 In addition to having more detectors, future work would require training or fintuning to a dataset of similar distribution (ideally images all collected from Twitter) so that the detector would work more accurately.
 ## Conclusion and Limitations
-
+In this study, we illustrate that there does exist some level of sexualizing of images by the cropper by focussing on intimate parts when they may not be the subject of the image. This effect is magnified for white naturalist and tribal images compared to LGBTQ and black naturalist images. Moreover, we also observe a high proportion of black naturalist images where the algorithm identifies the wrong subject, therefore avoiding people of darker skin tone. These findings present representational harm for several communities since it can alter the messaging of these users' posts and hence be marked as sensitive or seem sensitive when the intention is otherwise.
 
 ## References
 1. https://www.vox.com/2016/7/5/11949258/safe-spaces-explained

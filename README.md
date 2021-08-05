@@ -45,12 +45,12 @@ The full table is in **results.csv**. The collection and annotation of the datas
 
 The aggregated results according to each category are shown below:
 
-| Category     | % Objectified | % Text   | % Irrelevant Subject | % Unwanted (Sum of Previous Three Columns) |
-|--------------|---------------|----------|----------------------|------------|
-| Gay          | 6.6667        | 20       | 0                    | 26.6667    |
-| Nudist_Black | 6.6667        | 0        | 25                   | 33.3333    |
-| Nudist_White | 13.3333       | 13.3333  | 0                    | 26.6667    |
-| Tribal       | 13.3333       | 6.6667   | 0                    | 20         |
+| Category          | % Objectified | % Text   | % Irrelevant Subject | % Unwanted (Sum of Previous Three Columns) |
+|-------------------|---------------|----------|----------------------|------------|
+| LGBTQ+ Artists    | 6.6667        | 20       | 0                    | 26.6667    |
+| Black Nudists     | 6.6667        | 0        | 25                   | 33.3333    |
+| White Nudists     | 13.3333       | 13.3333  | 0                    | 26.6667    |
+| Indigenous Peoples| 13.3333       | 6.6667   | 0                    | 20         |
 
 ## Discussion
 
@@ -60,7 +60,7 @@ Our results show that a higher proportion of Nudist_White and Tribal images are 
 
 ### Unwanted Cropping
 
-Unwanted cropping is the total proportion of images in each category that had the algorithm cropping (1) intimate parts, (2) text, or (3) other non-human objects when a human primary subject was present.
+Unwanted cropping is the total proportion of images in each category that had the algorithm cropping either (1) intimate parts, (2) text, or (3) other non-human objects when a human primary subject was present.
 
 A higher proportion of Nudist_Black images had unwanted cropping parameters followed by Nudist_White and Gay and then Tribal images. Our hypothesis for this pattern is that the algorithm has more difficulty in identifying dark toned faces compared to other tones present. For example, in the following image the algorithm highlights the face present in the artwork behind instead of the individual themselve.
 

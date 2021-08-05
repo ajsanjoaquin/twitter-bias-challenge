@@ -106,7 +106,7 @@ We take this estimate from the fact that the users we selected have greater than
 we expect that this harm will recur daily (x1.3).
 * Justification: We justify [in this section](#why-this-harm-is-dangerous) why this harm is dangerous and must be addressed by Twitter. While our methodology have clear limitations, we operationalized on the notion of sexual objectification to investigate our our perceived harm. (x1.25)
 * Clarity: We demonstrate the risk of harm through example Twitter images that are annotated by the Cropper and denigrated. We also provide a comprehensive list of limitations and provide suggestions that future research can address. Furthermore, we provide the notebook to reproduce our dataset and methodology. In the case where we manually collected data, we also provide [instructions from the last paragraph of this section](#methodology) on how to reproduce it. (x1.25)
-* Creativity: We formed definitions for various scenarious present and connected the idea of sexual objectification to manipulating authors' intent. (x1.1)
+* Creativity: We formed definitions for various scenarios present in the cropped sensitive images and connected the idea of sexual objectification to manipulating authors' intent. (x1.1)
 
 * Final Score: 20 * 1.2 * 1.4 * 1.1 * 1.3 * 1.25 * 1.25 * 1.1 = 82.5825
 ## References

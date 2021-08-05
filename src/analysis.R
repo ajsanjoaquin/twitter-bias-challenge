@@ -1,5 +1,5 @@
 # Loading in data
-dataMain <- read.csv("C:/Users/Golam Rabbani/Downloads/twitter-20210804T043131Z-001/twitter/resultsClean.csv", stringsAsFactors = FALSE, header = TRUE)
+dataMain <- read.csv("results.csv", stringsAsFactors = FALSE, header = TRUE)
 
 # Calculating proportion of images that meet each criteria over each category
 dataObservation <- aggregate(dataMain[,3:5], by=list(dataMain$ï..Category), mean)

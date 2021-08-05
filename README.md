@@ -1,4 +1,4 @@
-# The Twitter Cropper's Gaze on Sensitive Content Involving Nudity
+# Twitter Cropper's Gaze on Sensitive Content Involving Nudity
 
 ![analysis sample](img_md/header.png?raw=true)
 *The Cropper identifies the right nipple as the most salient point. Cropping this area alone as a preview image denigrades the subject as a sexualized object.
@@ -12,7 +12,7 @@ Twitter's Image Crop Algorithm (Cropper) crops a portion of an image uploaded on
 In this work, we investigate how Cropper may introduce representational harm against artists of various traditions, indigenous peoples, and communities who do not conform to Western notions of clothing. Specifically, we explore how uploading images depicting non-sexual or non-pornographic nudity and inputting them to the Cropper may produce cropped images focused on intimate parts, which denigrades these communities and reduces the human subjects into sexualized objects.
 
 ### Why this harm is dangerous
-Various groups are prevented from expressing themselves or their work involving nudity because of various social, religious, and legal restrictions imposed on them such as censorship and modesty norms. Twitter provides a safe space: a space for these groups to freely express themselves [1], and it has historically fostered such communities centered on "sensitive content" when other websites shun these groups away. [2, 3] However, unintentionally denigrading these groups into purely sexual entities goes against Twitter's commitment to Equality Civil Liberties for all people. [4]
+Various groups are prevented from expressing themselves or their work involving nudity because of various social, religious, and legal restrictions imposed on them such as censorship and modesty norms. Twitter provides a safe space: a space for these groups to freely express themselves [1], and it has historically fostered such communities centered on "sensitive content" when other websites shun these groups away. [2, 3] However, unintentionally denigrading these groups into purely sexual entities goes against Twitter's commitment to Equality and Civil Liberties for all people. [4]
 
 ## Methodology (* are addressed in Limitations)
 We identify 4 groups of Twitter users who may be adversely affected: LGBTQ+ Artists, Indigenous Culture Peoples / advocates, White Naturists, and Black Naturists. Originally we only had one group for naturists, but we decided to split it after seeing many naturist pages on Twitter mostly contain images of white naturists only. 
@@ -27,9 +27,9 @@ Initially our detector is an open-sourced trained Neural Network called [NudeNet
 2. *is_text* - detects if majority of the cropped region is text / part of text
 3. *is_irrelevant* - detects if the subject in the cropped region is irrelevant. We define a region to be irrelevant if it does not focus on a part of the/any of the human subject/s in the photo. 
 
-Note that these labels are mutually exclusive (e.g. if a region has an intimate part, it cannot be irrelevant)
+Note that these labels are mutually exclusive (e.g. if a region has an intimate part, it cannot be irrelevant).
 
-The full table is in **results.csv**. The collection and annotation of the dataset can be reproduced with **main.ipynb**, except for manually collected images. For those manually collected, we scraped 15 images from the users starting from their most recent photo as of August 3, 2021. The analysis code used for the results section can be found in **analysis.r**. We also provide the annotated images in .zipped format. Refer to the table below for details
+The full table is in **results.csv**. The collection and annotation of the dataset can be reproduced with **main.ipynb**, except for manually collected images. For those manually collected, we scraped 15 images from the users starting from their most recent photo as of August 3, 2021. The analysis code used for the results section can be found in **analysis.r**. We also provide the annotated images in .zip format. Refer to the table below for details. Note that the images are Not Safe For Work (NSFW), and image copyright is owned by the Images Owners.
 
 | Group              | Folder Name                     | Images Owner | Twitter Source                   |
 |--------------------|---------------------------------|--------------|----------------------------------|
@@ -78,7 +78,7 @@ However, we belive we took the necessary caution to represent groups as much as 
 
 2. **Some Images may want to direct attention to Intimate Parts** There are some images whose authors intend the viewers to look at the intimate parts in non- sexual/objectifying ways. Some images may also focus on an intimate part entirely. One prominent example that we have seen are breast paintings/artwork. Our methodology fails to capture these cases, and it suggests we have to find a better proxy that comprehensively addresses when a gaze is sexualizing for these types of images. 
 
-3. **We did not find any reliable Intimate Part Detector Models** While NudeNet was available, it was the only detector we could find. As we have stated, it was inadequate for our purpose. We believe more work should go into making intimate parts detectors because majority of the models we found related to sensitive content are Not Safe For Work (NSFW) classifiers and pornographic classifiers. 
+3. **We did not find any reliable Intimate Part Detector Models** While NudeNet was available, it was the only detector we could find. As we have stated, it was inadequate for our purpose. We believe more work should go into making intimate parts detectors because majority of the models we found related to sensitive content are NSFW classifiers and pornographic classifiers. 
 
 In addition to having more detectors, future work would require training or fintuning to a dataset of similar distribution (ideally images all collected from Twitter) so that the detector would work more accurately.
 ## Conclusion and Limitations
